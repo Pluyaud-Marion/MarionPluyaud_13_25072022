@@ -1,0 +1,23 @@
+.Header {
+  border: red solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Header .logo {
+  width: 180px;
+  border: green solid;
+}
+
+.Header .icon-signup {
+  margin-right: 2%;
+  border: blue solid;
+  width: 5%;
+  font-weight: 500;
+  color: #2c3e50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/*# sourceMappingURL=header.css.map */
