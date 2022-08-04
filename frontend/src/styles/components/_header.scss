@@ -7,34 +7,42 @@
         width: 180px;
     }
 
-    .icon-signup {
-        text-decoration: none;
-        margin-right: 2%;
-        width: 11%;
-        font-weight: 500;
+    .signout {
+        width: 14%;
         color: $primary-color;
+        font-weight: bold;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
+
+        .container-icon-signout {
+            width: 44%;
+            text-decoration: none;
+            margin-right: 20%;
+            font-weight: 500;
+            color: $primary-color;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
     }
 
-    .connexion {
-        width: 100%;
+    .container-icon-signin {
+        width: 10%;
+        font-weight: 500;
+        color: $primary-color;
+
+        .link {
+            text-decoration: none;
+            color: $primary-color;
+        }
 
         .signin {
-            color: $primary-color;
+
             font-weight: bold;
             margin-left: 7%;
             align-items: center;
-        }
 
-        .signout {
-            color: $primary-color;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
         }
     }
-
 }

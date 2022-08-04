@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { setUser } from "../feature/user.slice"
+import Account from '../components/Account';
+import dataAccount from '../data';
 
 const User = () => {
     const dispatch = useDispatch();
@@ -25,16 +27,22 @@ const User = () => {
             })
     }, [dispatch, token])
 
-    const email = useSelector((state) => state?.user?.user?.email)
     const firstname = useSelector((state) => state?.user?.user?.firstName)
     const lastname = useSelector((state) => state?.user?.user?.lastName)
 
     return (
-        <div>
-            <h1>Page user</h1>
-            <h2>{email}</h2>
-            <h2>{firstname}</h2>
-            <h2>{lastname}</h2>
+        <div className='User'>
+            <div className='header'>
+                <h1>Welcome back</h1>
+                <h2>{firstname + " " + lastname + "!"}</h2>
+                <button className='edit-button'>Edit Name</button>
+            </div>
+            {
+                dataAccount?.map((account, index) => (
+                    <Account key={index} accountTitle={account['account-title']} accountAmount={account['account-amount']} accountDescription={account['account-description']} />
+                ))
+            }
+
         </div>
     );
 };
