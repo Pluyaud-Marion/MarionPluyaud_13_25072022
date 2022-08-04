@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import usersReducer from "../feature/users.slice"
+import logReducer from "../feature/log.slice"
+import userReducer from "../feature/user.slice"
 
 export default configureStore({
     reducer: {
-        users: usersReducer,
+        log: logReducer,
+        user: userReducer
     },
 })

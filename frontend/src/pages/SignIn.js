@@ -4,13 +4,13 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { Navigate, NavLink } from 'react-router-dom';
 import { getToken } from '../utils/services/getToken';
-import { setUsers } from "../feature/users.slice"
+import { setLog } from "../feature/log.slice"
+
 
 const SignIn = () => {
-    // let email = ""
-    // let password = ""
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [status, setStatus] = useState(null)
 
     const urlApi = "http://localhost:3001/api/v1/user"
 
@@ -26,10 +26,10 @@ const SignIn = () => {
         axios.post(urlApi + "/login", login)
             .then(res => {
                 console.log(res.data);
-                dispatch(setUsers(res.data.body))
-                if (res.data.body) {
-                    return <Navigate to="/user" />
-                }
+                dispatch(setLog(res.data.body.token))
+
+                setStatus(res.data.status)
+
             }
                 //return <Navigate to="/user" />
 
@@ -38,7 +38,9 @@ const SignIn = () => {
 
     }
 
-
+    if (status === 200) {
+        return <Navigate to="/user" />
+    }
     //useGetToken()
 
 
