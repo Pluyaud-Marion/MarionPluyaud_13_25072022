@@ -10,11 +10,31 @@
     .icon-signup {
         text-decoration: none;
         margin-right: 2%;
-        width: 5%;
+        width: 11%;
         font-weight: 500;
         color: $primary-color;
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
+
+    .connexion {
+        width: 100%;
+
+        .signin {
+            color: $primary-color;
+            font-weight: bold;
+            margin-left: 7%;
+            align-items: center;
+        }
+
+        .signout {
+            color: $primary-color;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+    }
+
 }

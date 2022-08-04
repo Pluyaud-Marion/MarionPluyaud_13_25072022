@@ -1,18 +1,17 @@
 import axios from 'axios';
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import { Navigate, NavLink } from 'react-router-dom';
-import { getToken } from '../utils/services/getToken';
+import { Navigate } from 'react-router-dom';
 import { setLog } from "../feature/log.slice"
+import { setStatus } from '../feature/status.slice';
 
 
 const SignIn = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [status, setStatus] = useState(null)
 
-    const urlApi = "http://localhost:3001/api/v1/user"
+    const status = useSelector((state) => state.status.status)
 
     const dispatch = useDispatch();
 
@@ -21,29 +20,21 @@ const SignIn = () => {
         password
     }
 
+
     const submitLogin = (e) => {
         e.preventDefault()
-        axios.post(urlApi + "/login", login)
+        axios.post("http://localhost:3001/api/v1/user/login", login)
             .then(res => {
-                console.log(res.data);
                 dispatch(setLog(res.data.body.token))
-
-                setStatus(res.data.status)
-
-            }
-                //return <Navigate to="/user" />
-
-
-            )
-
+                dispatch(setStatus(res.data.status))
+            })
     }
+
+
 
     if (status === 200) {
         return <Navigate to="/user" />
     }
-    //useGetToken()
-
-
 
     return (
         <div className='SignIn'>

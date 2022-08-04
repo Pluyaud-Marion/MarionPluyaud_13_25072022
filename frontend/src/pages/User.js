@@ -10,11 +10,8 @@ const User = () => {
 
     const token = useSelector((state) => state.log.log)
 
-    const email = useSelector((state) => state.user.user.email)
-    const firstname = useSelector((state) => state.user.user.firstName)
-    const lastname = useSelector((state) => state.user.user.lastName)
+    console.log(token);
 
-    //const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZGFkM2M4NTRiMmFiNjJhMjlmNTY0ZCIsImlhdCI6MTY1OTU0MjcyNCwiZXhwIjoxNjU5NjI5MTI0fQ.yN7bNMhXgFIYm1uZKD9K27A1OKfdnYI8nse1LswtaKg"
 
     useEffect(() => {
         axios({
@@ -23,9 +20,14 @@ const User = () => {
             headers: { Authorization: `Bearer ${token}` }
         })
             .then(res => {
+                console.log(res.data);
                 dispatch(setUser(res.data.body))
             })
-    }, [token])
+    }, [dispatch, token])
+
+    const email = useSelector((state) => state?.user?.user?.email)
+    const firstname = useSelector((state) => state?.user?.user?.firstName)
+    const lastname = useSelector((state) => state?.user?.user?.lastName)
 
     return (
         <div>
@@ -33,7 +35,6 @@ const User = () => {
             <h2>{email}</h2>
             <h2>{firstname}</h2>
             <h2>{lastname}</h2>
-
         </div>
     );
 };
