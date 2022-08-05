@@ -20,17 +20,17 @@ This repo contains all the source code for project 13 of DA Javascript | React l
 
 * API : (you can find only the API here : https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API)
   - Run the following commands in your terminal for launch API : 
-  `cd API-ArgentBank`
-  `npm install`
-  `npm run dev:server`
+    - `cd API-ArgentBank`
+    - `npm install`
+    - `npm run dev:server`
   
   *Run on port 3001*
 
 * Frontend : 
   - Run the following commands in other terminal for launch front : 
-  `cd frontend`
-  `npm install`
-  `npm start`
+    - `cd frontend`
+    - `npm install`
+    - `npm start`
   
   *Run on port 3000*
 
