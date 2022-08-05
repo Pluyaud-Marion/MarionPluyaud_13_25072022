@@ -27,7 +27,7 @@
 
                 .noEmail,
                 .noPassword,
-                .userNotFound {
+                #userNotFound {
                     margin: 0 0;
                     font-size: 13px;
                     color: red;
@@ -62,7 +62,7 @@
             }
 
 
-            .userNotFound {
+            #userNotFound {
                 margin: 0 0;
                 font-size: 13px;
                 color: red;

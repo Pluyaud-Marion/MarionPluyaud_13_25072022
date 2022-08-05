@@ -1,4 +1,6 @@
 import axios from "axios"
+import { useState } from "react"
+
 
 /**
  * 
@@ -6,9 +8,14 @@ import axios from "axios"
  * @returns result of call Api login = token
  */
 export const getToken = (login) => {
+
+
     return axios.post("http://localhost:3001/api/v1/user/login", login)
         .then(res => res.data.body)
-        .catch(error => console.log(error))
+        .catch(error => {
+            document.querySelector("#userNotFound").innerHTML = "Username et/ou Password erroné"
+            console.log(error)
+        })
 }
 
 /**

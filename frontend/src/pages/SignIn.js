@@ -33,51 +33,45 @@ const SignIn = () => {
     const submitLogin = async (e) => {
         e.preventDefault()
 
+        const inputEmail = document.querySelector("#username").value
+        const inputPassword = document.querySelector("#password").value
         /**
          * conditions for display errors in form
          * username empty / password empty / failure log
          */
-        if (!email) {
+        if (inputEmail === "") {
             document.querySelector(".noEmail").innerHTML = "Vous devez compléter ce champ"
 
         } else {
             document.querySelector(".noEmail").innerHTML = ""
         }
-        if (!password) {
+        if (inputPassword === "") {
             document.querySelector(".noPassword").innerHTML = "Vous devez compléter ce champ"
         } else {
             document.querySelector(".noPassword").innerHTML = ""
         }
 
-        if (email && password) {
-            //call function getToken in services and add result in constante token
-            const token = await getToken(login)
+        //call function getToken in services and add result in constante token
+        const token = await getToken(login)
 
-            //add token in LS
-            localStorage.setItem("token", JSON.stringify(token))
+        //add token in LS
+        localStorage.setItem("token", JSON.stringify(token))
 
-            //call function logUser in services and add result in constante user
-            const user = await logUser(token)
+        //call function logUser in services and add result in constante user
+        const user = await logUser(token)
 
-            //if user log ok => change in reducer log the statut : true
-            if (user.status === 200) {
-                dispatch(setLog(true))
-            }
-            //add in reducer user => all infos of user (firstname, lastname etc)
-            dispatch(setUser(user.body))
+        //if user log ok => change in reducer log the statut : true
+        if (user.status === 200) {
+            dispatch(setLog(true))
         }
 
-        if (!log) {
-            document.querySelector(".userNotFound").innerHTML = "Username et/ou Password erroné"
-        } else {
-            document.querySelector(".userNotFound").innerHTML = ""
-        }
+        //add in reducer user => all infos of user (firstname, lastname etc)
+        dispatch(setUser(user.body))
     }
 
     if (log === true) {
         return <Navigate to="/user" />
     }
-
 
     return (
         <div className='SignIn'>
@@ -99,7 +93,7 @@ const SignIn = () => {
                         <input type="checkbox" id='remember-me' />
                         <label className='label-remember-me' htmlFor="remember-me">Remember me</label>
                     </div>
-                    <p className='userNotFound'></p>
+                    <p id='userNotFound'></p>
 
                     <div className='container-button-signin'>
                         <button onClick={submitLogin} className='button-signin' type="sumbit">Sign In</button>
