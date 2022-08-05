@@ -3,8 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Account from '../components/Account';
 import dataAccount from '../data';
 import { setUser } from '../feature/user.slice';
-import { editUser } from '../utils/services/services';
+import { editUser } from '../utils/services';
 
+/**
+ * 
+ * @returns {JSX} - React Page
+ */
 const User = () => {
     const dispatch = useDispatch();
 

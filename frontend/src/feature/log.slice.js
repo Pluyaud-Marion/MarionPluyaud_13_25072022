@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+// Initialization of reducer log
 export const logSlice = createSlice({
     name: "log",
     initialState: {

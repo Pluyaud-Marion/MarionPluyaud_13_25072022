@@ -5,22 +5,31 @@ import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { setLog } from "../feature/log.slice"
 import { setUser } from "../feature/user.slice"
-import { getToken, logUser } from '../utils/services/services';
+import { getToken, logUser } from '../utils/services';
 
-
+/**
+ * 
+ * @returns {JSX} - React Page
+ */
 const SignIn = () => {
+    const dispatch = useDispatch();
+
+    // Define state email and password
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-    const dispatch = useDispatch();
+    // Take in log reducer the state of log
+    const log = useSelector((state) => state?.log?.log)
 
+    /**
+     * Object with email and password (value of input in form : onChange)
+     */
     const login = {
         email,
         password
     }
 
-    const log = useSelector((state) => state?.log?.log)
-
+    //Function called onClick in button submit
     const submitLogin = async (e) => {
         e.preventDefault()
 

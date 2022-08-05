@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import User from "./pages/User";
 
+// Router
 function App() {
     return (
         <BrowserRouter>

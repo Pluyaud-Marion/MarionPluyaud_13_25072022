@@ -1,5 +1,9 @@
 import React from 'react';
 
+/**
+ * component Footer called on router for all pages
+ * @returns {JSX} - React component
+ */
 const Footer = () => {
     return (
         <div className='Footer'>

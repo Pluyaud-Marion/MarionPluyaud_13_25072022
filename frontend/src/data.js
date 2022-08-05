@@ -1,3 +1,5 @@
+// mocked data for component Account
+
 const dataAccount = [
     {
         "account-title": "Argent Bank Checking (x8349)",

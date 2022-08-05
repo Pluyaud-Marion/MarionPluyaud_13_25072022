@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * Component called on page Home
+ * @param {String} icon  
+ * @param {String} title  
+ * @param {String} text  
+ * @returns {JSX} - React component
+ */
 const Details = ({ icon, title, text }) => {
     return (
         <div className='one-details'>

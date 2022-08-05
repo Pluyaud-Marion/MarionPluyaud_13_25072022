@@ -5,12 +5,24 @@ import logo from "../assets/argentBankLogo.png"
 import { setLog } from "../feature/log.slice"
 import { setUser } from '../feature/user.slice';
 
+/**
+ * component Header called on router for all pages
+ * @returns {JSX} - React component
+ */
 const Header = () => {
+    // Take on log reducer the state of log (true or false)
     const log = useSelector((state) => state?.log?.log)
+
+    // Take on user reducer the firstName of user
     const firstname = useSelector((state) => state?.user?.user?.firstName)
 
     const dispatch = useDispatch();
 
+    /**
+     * function for logout the user on click in icon
+     * update state of log in reducer = false
+     * update state of user in reducer for delete the data
+     */
     const logout = () => {
         dispatch(setLog(false))
         dispatch(setUser({}))

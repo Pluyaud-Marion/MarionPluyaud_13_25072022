@@ -1,6 +1,12 @@
 import React from 'react';
 
-
+/**
+ * Component called on page User for each transaction
+ * @param {String} accountTitle 
+ * @param {String} accountAmount 
+ * @param {String} accountDescription 
+ * @returns {JSX} - React component
+ */
 const Account = ({ accountTitle, accountAmount, accountDescription }) => {
 
     return (

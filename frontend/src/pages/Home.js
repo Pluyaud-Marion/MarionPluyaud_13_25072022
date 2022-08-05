@@ -1,10 +1,14 @@
 import React from 'react';
 import Banner from "../assets/bank-tree.jpeg"
-import Details from '../components/Details';
 import IconChat from '../assets/icon-chat.png'
 import IconMoney from '../assets/icon-money.png'
 import IconSecurity from '../assets/icon-security.png'
+import Details from '../components/Details';
 
+/**
+ * Call the component Details
+ * @returns {JSX} - React Page
+ */
 const Home = () => {
     return (
         <div className='Home'>

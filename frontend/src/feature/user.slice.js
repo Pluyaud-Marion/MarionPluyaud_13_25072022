@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+// Initialization of reducer user
 export const userSlice = createSlice({
     name: "user",
     initialState: {},
