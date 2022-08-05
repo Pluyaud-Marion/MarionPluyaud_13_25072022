@@ -8,28 +8,37 @@ import { editUser } from '../utils/services/services';
 const User = () => {
     const dispatch = useDispatch();
 
-    const [show, setShow] = useState(true)
-
+    // Take firstname and lastname in reducer user
     const firstname = useSelector((state) => state?.user?.user?.firstName)
     const lastname = useSelector((state) => state?.user?.user?.lastName)
 
+    /**
+     * Define state firstName and lastName -> default firstname and lastname in reducer user
+     */
     const [firstName, setOriginFirstname] = useState(firstname)
     const [lastName, setOriginLastname] = useState(lastname)
 
+    /**
+     * Define state show : true
+     */
+    const [show, setShow] = useState(true)
     const showEditUser = () => {
         show === true ? setShow(false) : setShow(true)
     }
 
+    /**
+     * Object with new firstName and Lastname (value of input edit user)
+     */
     const newData = {
         firstName,
         lastName
     }
 
     const submitEdit = async (e) => {
+        // call function in services with params new object
         const newUser = await editUser(newData)
-        console.log(newUser);
+        // add in reducer user the new infos (firstName and lastName) of the user
         dispatch(setUser(newUser.data.body))
-
     }
 
     return (

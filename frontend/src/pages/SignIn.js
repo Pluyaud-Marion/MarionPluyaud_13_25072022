@@ -23,24 +23,51 @@ const SignIn = () => {
 
     const submitLogin = async (e) => {
         e.preventDefault()
-        const token = await getToken(login)
 
-        localStorage.setItem("token", JSON.stringify(token))
+        /**
+         * conditions for display errors in form
+         * username empty / password empty / failure log
+         */
+        if (!email) {
+            document.querySelector(".noEmail").innerHTML = "Vous devez compléter ce champ"
 
-        const user = await logUser(token)
-
-        if (user.status === 200) {
-            dispatch(setLog(true))
+        } else {
+            document.querySelector(".noEmail").innerHTML = ""
         }
-        dispatch(setUser(user.body))
+        if (!password) {
+            document.querySelector(".noPassword").innerHTML = "Vous devez compléter ce champ"
+        } else {
+            document.querySelector(".noPassword").innerHTML = ""
+        }
 
+        if (email && password) {
+            //call function getToken in services and add result in constante token
+            const token = await getToken(login)
+
+            //add token in LS
+            localStorage.setItem("token", JSON.stringify(token))
+
+            //call function logUser in services and add result in constante user
+            const user = await logUser(token)
+
+            //if user log ok => change in reducer log the statut : true
+            if (user.status === 200) {
+                dispatch(setLog(true))
+            }
+            //add in reducer user => all infos of user (firstname, lastname etc)
+            dispatch(setUser(user.body))
+        }
+
+        if (!log) {
+            document.querySelector(".userNotFound").innerHTML = "Username et/ou Password erroné"
+        } else {
+            document.querySelector(".userNotFound").innerHTML = ""
+        }
     }
 
     if (log === true) {
         return <Navigate to="/user" />
     }
-
-
 
 
     return (
@@ -51,20 +78,19 @@ const SignIn = () => {
                 <form action="" className='form'>
                     <div className='input'>
                         <label className='label-input' htmlFor="username">Username</label>
-                        <input onChange={(e) => setEmail(e.target.value)} type="text" id='username' />
-                        {/* <p className='noEmail'></p> */}
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" id='username' />
+                        <p className='noEmail'></p>
                     </div>
                     <div className='input'>
                         <label className='label-input' htmlFor="password">Password</label>
                         <input onChange={(e) => setPassword(e.target.value)} type="text" id='password' />
-                        {/* <p className='noPassword'></p> */}
+                        <p className='noPassword'></p>
                     </div>
                     <div className='input-remember'>
                         <input type="checkbox" id='remember-me' />
                         <label className='label-remember-me' htmlFor="remember-me">Remember me</label>
                     </div>
-                    {/* <NavLink to="/user" className="button-signin">Sign In</NavLink> */}
-                    {/* <p className='userNotFound'></p> */}
+                    <p className='userNotFound'></p>
 
                     <div className='button-signin'>
                         <button onClick={submitLogin} type="sumbit">Sign In</button>

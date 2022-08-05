@@ -24,6 +24,14 @@
                 font-size: 1.2rem;
                 margin-bottom: 1rem;
                 text-align: left;
+
+                .noEmail,
+                .noPassword,
+                .userNotFound {
+                    margin: 0 0;
+                    font-size: 13px;
+                    color: red;
+                }
             }
 
             .label-input {
@@ -47,6 +55,12 @@
                 background-color: #00bc77;
                 color: #fff;
                 text-align: center;
+            }
+
+            .userNotFound {
+                margin: 0 0;
+                font-size: 13px;
+                color: red;
             }
         }
     }
