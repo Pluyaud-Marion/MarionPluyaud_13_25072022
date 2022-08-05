@@ -44,18 +44,23 @@
                 color: $primary-color;
             }
 
-            .button-signin {
+            .container-button-signin {
                 display: block;
-                width: 100%;
                 padding: 8px;
-                font-size: 1.1rem;
-                font-weight: bold;
                 margin-top: 1rem;
                 border-color: #00bc77;
                 background-color: #00bc77;
-                color: #fff;
                 text-align: center;
+
+                .button-signin {
+                    border: none;
+                    color: #fff;
+                    background-color: #00bc77;
+                    font-size: 1.1rem;
+                    font-weight: bold;
+                }
             }
+
 
             .userNotFound {
                 margin: 0 0;

@@ -54,3 +54,50 @@
         }
     }
 }
+
+@media screen and (max-width:1300px) {
+    .User {
+        .header {
+            .no-edit {
+                .container-button {
+                    width: 22%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:700px) {
+    .User {
+        .header {
+            .no-edit {
+                .container-button {
+                    width: 27%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width:540px) {
+    .User {
+        .header {
+            .no-edit {
+                .container-input {
+                    flex-direction: column;
+
+                    .edit-firstname,
+                    .edit-lastname {
+                        margin-bottom: 10%;
+                        width: 100%;
+                    }
+                }
+
+                .container-button {
+                    width: 100%;
+                    justify-content: space-around;
+                }
+            }
+        }
+    }
+}

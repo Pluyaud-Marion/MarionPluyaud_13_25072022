@@ -101,8 +101,8 @@ const SignIn = () => {
                     </div>
                     <p className='userNotFound'></p>
 
-                    <div className='button-signin'>
-                        <button onClick={submitLogin} type="sumbit">Sign In</button>
+                    <div className='container-button-signin'>
+                        <button onClick={submitLogin} className='button-signin' type="sumbit">Sign In</button>
                     </div>
 
                 </form>
