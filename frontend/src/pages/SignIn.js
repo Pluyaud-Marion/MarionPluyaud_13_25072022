@@ -92,7 +92,7 @@ const SignIn = () => {
                     </div>
                     <div className='input'>
                         <label className='label-input' htmlFor="password">Password</label>
-                        <input onChange={(e) => setPassword(e.target.value)} type="text" id='password' />
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" id='password' />
                         <p className='noPassword'></p>
                     </div>
                     <div className='input-remember'>
