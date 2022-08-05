@@ -23,6 +23,19 @@ This repo contains all the source code for project 13 of DA Javascript | React l
     - `cd API-ArgentBank`
     - `npm install`
     - `npm run dev:server`
+    - `npm run populate-db` : for create 2 users in your database 
+        - Tony Stark
+          - First Name: Tony
+          - Last Name: Stark
+          - Email: tony@stark.com
+          - Password: password123
+          
+        - Steve Rogers
+          - First Name : Steve
+          - Last Name : Rogers
+          - Email : steve@rogers.com
+          - Password : password456
+          
   
   *Run on port 3001*
 
