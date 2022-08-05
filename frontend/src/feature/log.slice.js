@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 export const logSlice = createSlice({
     name: "log",
     initialState: {
-        log: null
+        log: false
     },
     reducers: {
         setLog: (state, action) => {

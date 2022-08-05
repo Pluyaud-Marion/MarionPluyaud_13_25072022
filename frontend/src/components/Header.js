@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import logo from "../assets/argentBankLogo.png"
 import { setLog } from "../feature/log.slice"
-import { setStatus } from '../feature/status.slice';
 import { setUser } from '../feature/user.slice';
 
 const Header = () => {
@@ -13,9 +12,9 @@ const Header = () => {
     const dispatch = useDispatch();
 
     const logout = () => {
-        dispatch(setLog(null))
+        dispatch(setLog(false))
         dispatch(setUser({}))
-        dispatch(setStatus(null))
+        localStorage.clear()
 
     }
     return (
