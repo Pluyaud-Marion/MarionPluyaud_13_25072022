@@ -1,6 +1,4 @@
 import axios from "axios"
-import { useState } from "react"
-
 
 /**
  * 
@@ -8,8 +6,6 @@ import { useState } from "react"
  * @returns result of call Api login = token
  */
 export const getToken = (login) => {
-
-
     return axios.post("http://localhost:3001/api/v1/user/login", login)
         .then(res => res.data.body)
         .catch(error => {
