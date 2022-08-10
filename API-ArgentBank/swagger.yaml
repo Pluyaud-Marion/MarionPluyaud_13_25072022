@@ -70,6 +70,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string 
       produces:
         - application/json
       responses:
@@ -93,6 +94,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
         - in: body
           name: body
           description: Update user profile attributes
@@ -125,6 +127,7 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type : string
       produces:
         - application/json
       responses:
@@ -149,7 +152,8 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
-
+          type: string
+          
         - in: body
           name: body
           description: create use transaction
@@ -167,7 +171,7 @@ paths:
         '500':
           description: Internal Server Error
 
-  /user/profile/transaction/idTransaction:
+  /user/profile/transaction/{idTransaction}:
     get:
       security:
         - Bearer: []
@@ -180,10 +184,13 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string 
+          
         - in: path
           name: idTransaction
           description: id of transaction
           required: true
+          type: string
           
       produces:
         - application/json
@@ -207,10 +214,14 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
+          
         - in: path
           name: idTransaction
           description: id of transaction
           required: true
+          type : number
+          
         - in: body
           name: body
           description: update user transaction
@@ -243,10 +254,13 @@ paths:
           name: Authorization
           description: Attach Bearer JWT token
           required: true
+          type: string
+          
         - in: path
           name: idTransaction
           description: id of transaction
           required: true
+          type: number
           
       produces:
         - application/json
@@ -292,7 +306,7 @@ definitions:
   CreateTransaction:
     properties:
       date:
-        type: date
+        type: number
         description: transaction date
       description:
         type: string
@@ -307,7 +321,7 @@ definitions:
   UpdateTransaction:
     properties:
       date:
-        type: date
+        type: number
         description: transaction date
       description:
         type: string
