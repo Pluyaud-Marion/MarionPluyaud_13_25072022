@@ -197,6 +197,8 @@ paths:
       responses:
         '200':
           description: transaction details retrieved successully
+          schema:
+            $ref: '#/definitions/TransactionResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -235,7 +237,7 @@ paths:
         '200':
           description: update transaction with success
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/TransactionResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -267,8 +269,6 @@ paths:
       responses:
         '200':
           description: transaction delete with success
-          schema:
-            $ref: '#/definitions/ApiResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -366,3 +366,19 @@ definitions:
         type: string
       lastName:
         type: string
+  
+  TransactionResponse:
+    properties:
+      date:
+        type: number
+      description:
+        type: string
+      amount:
+        type: number
+      balance:
+        type: number
+      category:
+        type: string
+      note:
+        type: number
+
