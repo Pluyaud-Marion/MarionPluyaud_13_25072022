@@ -33,24 +33,6 @@ const SignIn = () => {
     const submitLogin = async (e) => {
         e.preventDefault()
 
-        const inputEmail = document.querySelector("#username").value
-        const inputPassword = document.querySelector("#password").value
-        /**
-         * conditions for display errors in form
-         * username empty / password empty / failure log
-         */
-        if (inputEmail === "") {
-            document.querySelector(".noEmail").innerHTML = "Vous devez compléter ce champ"
-
-        } else {
-            document.querySelector(".noEmail").innerHTML = ""
-        }
-        if (inputPassword === "") {
-            document.querySelector(".noPassword").innerHTML = "Vous devez compléter ce champ"
-        } else {
-            document.querySelector(".noPassword").innerHTML = ""
-        }
-
         //call function getToken in services and add result in constante token
         const token = await getToken(login)
 
@@ -81,13 +63,11 @@ const SignIn = () => {
                 <form action="" className='form'>
                     <div className='input'>
                         <label className='label-input' htmlFor="username">Username</label>
-                        <input onChange={(e) => setEmail(e.target.value)} type="email" id='username' />
-                        <p className='noEmail'></p>
+                        <input onChange={(e) => setEmail(e.target.value)} type="email" id='username' required />
                     </div>
                     <div className='input'>
                         <label className='label-input' htmlFor="password">Password</label>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" id='password' />
-                        <p className='noPassword'></p>
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" id='password' required />
                     </div>
                     <div className='input-remember'>
                         <input type="checkbox" id='remember-me' />

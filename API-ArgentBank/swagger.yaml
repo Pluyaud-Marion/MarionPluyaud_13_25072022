@@ -113,8 +113,7 @@ paths:
         '500':
           description: Internal Server Error
 
-#################################
-  /user/profile/transaction:
+  /user/profile/{accountId}/transactions:
     get:
       security:
         - Bearer: []
@@ -128,50 +127,25 @@ paths:
           description: Attach Bearer JWT token
           required: true
           type : string
+        
+        - in: path
+          name: accountId
+          description: id of account
+          required: true
+          type: string
       produces:
         - application/json
       responses:
         '200':
           description: All transactions retrieved successully
           schema:
-            $ref: '#/definitions/ApiResponse'
+            $ref: '#/definitions/AllTransactions'
         '400':
           description: Invalid Fields
         '500':
           description: Internal Server Error
     
-    post:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: create one transaction
-      description: API for create a user transactions
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-          
-        - in: body
-          name: body
-          description: create use transaction
-          required: true
-          schema:
-            $ref: '#/definitions/CreateTransaction'
-        
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: transaction creating with success
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-  /user/profile/transaction/{idTransaction}:
+  /user/profile/{accountId}/{transactionId}:
     get:
       security:
         - Bearer: []
@@ -187,8 +161,14 @@ paths:
           type: string 
           
         - in: path
-          name: idTransaction
+          name: transactionId
           description: id of transaction
+          required: true
+          type: string
+
+        - in: path
+          name: accountId
+          description: id of account
           required: true
           type: string
           
@@ -219,10 +199,16 @@ paths:
           type: string
           
         - in: path
-          name: idTransaction
+          name: transactionId
           description: id of transaction
           required: true
           type : number
+
+        - in: path
+          name: accountId
+          description: id of account
+          required: true
+          type: string
           
         - in: body
           name: body
@@ -237,38 +223,7 @@ paths:
         '200':
           description: update transaction with success
           schema:
-            $ref: '#/definitions/TransactionResponse'
-        '400':
-          description: Invalid Fields
-        '500':
-          description: Internal Server Error
-
-
-    delete:
-      security:
-        - Bearer: []
-      tags:
-        - User Module
-      summary: delete one transaction
-      description: API for delete one transaction
-      parameters:
-        - in: header
-          name: Authorization
-          description: Attach Bearer JWT token
-          required: true
-          type: string
-          
-        - in: path
-          name: idTransaction
-          description: id of transaction
-          required: true
-          type: number
-          
-      produces:
-        - application/json
-      responses:
-        '200':
-          description: transaction delete with success
+            $ref: '#/definitions/UpdateTransactionResponse'
         '400':
           description: Invalid Fields
         '500':
@@ -303,42 +258,22 @@ definitions:
         type: string
         description: user password
 
-  CreateTransaction:
+  AllTransactions:
     properties:
-      date:
-        type: number
-        description: transaction date
-      description:
-        type: string
-        description: transaction description
-      amount:
-        type: number
-        description: transaction amount
-      balance:
-        type: number
-        description: transaction number
-  
+      allTransactions:
+        type: array
+        items: 
+          type: string
+          
+      
   UpdateTransaction:
     properties:
-      date:
-        type: number
-        description: transaction date
-      description:
-        type: string
-        description: transaction description
-      amount:
-        type: number
-        description: transaction amount
-      balance:
-        type: number
-        description: transaction number
       category:
         type: string
         description: transaction category
       note:
         type: number
         description: transaction note
-
 
   ApiResponse:
     type: object
@@ -367,6 +302,15 @@ definitions:
       lastName:
         type: string
   
+  UpdateTransactionResponse:
+    properties:
+      category:
+        type: string
+        description: transaction category
+      note:
+        type: number
+        description: transaction note
+
   TransactionResponse:
     properties:
       date:
@@ -377,8 +321,9 @@ definitions:
         type: number
       balance:
         type: number
+      transaction type:
+        type: string
       category:
         type: string
       note:
         type: number
-
